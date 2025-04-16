@@ -1,0 +1,31 @@
+{
+  "name": "nigiri",
+  "private": "true",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "run": "GTK_DEBUG=interactive gjs -m dist/index.js"
+  },
+  "keywords": [],
+  "author": "Alice Alysia <alice@alysia.au>",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "@gnome-vue/core": "file:gnome-vue/packages/core",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/runtime-core": "^3.5.13",
+    "rollup-plugin-styles": "^4.0.0",
+    "rollup-plugin-vue": "^6.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-replace": "^6.0.2",
+    "esbuild": "^0.25.2",
+    "rollup": "^4.40.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "typescript": "^5.8.3"
+  }
+}
