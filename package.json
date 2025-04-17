@@ -1,31 +1,25 @@
 {
   "name": "nigiri",
-  "private": "true",
+  "private": true,
   "version": "0.0.1",
-  "description": "",
-  "main": "src/index.ts",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "run": "GTK_DEBUG=interactive gjs -m dist/index.js"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "start-app": "gjs -m dist/main.js",
+    "debug": "GTK_DEBUG=interactive npm run start-app",
+    "start": "npm run build && npm run start-app"
   },
-  "keywords": [],
-  "author": "Alice Alysia <alice@alysia.au>",
-  "license": "LGPL-3.0-or-later",
   "dependencies": {
-    "@gnome-vue/core": "file:gnome-vue/packages/core",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@vue/compiler-sfc": "^3.5.13",
     "@vue/runtime-core": "^3.5.13",
-    "rollup-plugin-styles": "^4.0.0",
-    "rollup-plugin-vue": "^6.0.0"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@rollup/plugin-alias": "^5.1.1",
-    "@rollup/plugin-replace": "^6.0.2",
-    "esbuild": "^0.25.2",
-    "rollup": "^4.40.0",
-    "rollup-plugin-dts": "^6.2.1",
-    "rollup-plugin-esbuild": "^6.2.1",
-    "typescript": "^5.8.3"
+    "@vitejs/plugin-vue": "^5.2.2",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1",
+    "vue-tsc": "^2.2.8"
   }
 }
