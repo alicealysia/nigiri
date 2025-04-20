@@ -1,5 +1,5 @@
 {
-    "name": "astal-shell",
+    "name": "nigiri",
     "dependencies": {
         "astal": "/usr/share/astal/gjs"
     }
