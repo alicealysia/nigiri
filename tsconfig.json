@@ -2,16 +2,30 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
         "experimentalDecorators": true,
-        "strict": true,
+        "strict": false,
         "target": "ES2022",
         "module": "ES2022",
-        "lib": ["ES2022"],
-        "moduleResolution": "Bundler",
+        "moduleResolution": "bundler",
         // "checkJs": true,
         // "allowJs": true,
         "jsx": "react-jsx",
         "jsxImportSource": "astal/gtk4",
         "skipLibCheck": true,
-        "allowJs": true
-    }
+        "allowJs": true,
+        "baseUrl": ".",
+        "preserveSymlinks": false,
+        "outDir": "dist",
+        "types": [
+            "./@girs"
+        ]
+    },
+    "include": [
+        "src",
+        "public",
+        "@girs"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
 }

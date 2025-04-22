@@ -1,5 +1,3 @@
-//this file was taken from https://github.com/YaLTeR/niri/blob/main/niri-config/src/lib.rs for the purposes of testing and parsing
-
 input {
     keyboard {
         repeat-delay 600

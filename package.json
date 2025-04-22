@@ -1,6 +1,38 @@
 {
-    "name": "nigiri",
-    "dependencies": {
-        "astal": "/usr/share/astal/gjs"
-    }
+  "name": "nigiri",
+  "version": "0.0.1",
+  "description": "A niri Gui",
+  "homepage": "https://github.com/alicealysia/nigiri#readme",
+  "bugs": {
+    "url": "https://github.com/alicealysia/nigiri/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alicealysia/nigiri.git"
+  },
+  "license": "ISC",
+  "author": "Alice Alysia",
+  "type": "module",
+  "main": "src/app.ts",
+  "scripts": {
+    "gjs-build": "node esbuild.js",
+    "gjs-start": "gjs -m dist/app.js",
+    "start": "npm run gjs-build && npm run gjs-start"
+  },
+  "dependencies": {
+    "astal": "file:../../../../../usr/share/astal/gjs",
+    "kdljs": "^0.3.0",
+    "ts-for-gir": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "esbuild": "^0.25.2",
+    "esbuild-plugin-inline-import": "^1.1.0",
+    "esbuild-sass-plugin": "^3.3.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "react": "^19.1.0",
+    "tslib": "^2.8.1"
+  }
 }
