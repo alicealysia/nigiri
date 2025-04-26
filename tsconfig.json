@@ -15,9 +15,6 @@
         "baseUrl": ".",
         "preserveSymlinks": false,
         "outDir": "dist",
-        "types": [
-            "./@girs"
-        ]
     },
     "include": [
         "src",
@@ -26,6 +23,5 @@
     ],
     "exclude": [
         "dist",
-        "node_modules"
     ]
 }
