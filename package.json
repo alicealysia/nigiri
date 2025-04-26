@@ -10,13 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/alicealysia/nigiri.git"
   },
-  "license": "ISC",
+  "license": "Non-AI, Anti-Discrimination ISC https://github.com/alicealysia/nigiri/blob/main/license.md",
   "author": "Alice Alysia",
   "type": "module",
   "main": "src/app.ts",
   "scripts": {
     "gjs-build": "node esbuild.js",
-    "gjs-start": "gjs -m dist/app.js",
+    "gjs-start": "LD_PRELOAD=\"/usr/lib/libgtk4-layer-shell.so\" gjs -m dist/app.js",
     "start": "npm run gjs-build && npm run gjs-start"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "esbuild": "^0.25.2",
     "esbuild-plugin-inline-import": "^1.1.0",
     "esbuild-sass-plugin": "^3.3.1",
+    "postcss-modules": "^6.0.1",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "react": "^19.1.0",

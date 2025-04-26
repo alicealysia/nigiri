@@ -3,13 +3,7 @@
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
 
-ApplicationWindow.KdlRenderer {
-    background: transparent;
+.kdl-renderer {
+    background: $bg-color;
     color: $fg-color;
-    font-weight: bold;
-
-    button {
-        border-radius: 8px;
-        margin: 2px;
-    }
 }

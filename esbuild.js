@@ -1,5 +1,6 @@
 import { build } from 'esbuild'
-import esbuildPluginInlineImport from "esbuild-plugin-inline-import";
+//import esbuildPluginInlineImport from "esbuild-plugin-inline-import";
+import { sassPlugin } from 'esbuild-sass-plugin'
 import react from "react";
 
 await build({
@@ -10,6 +11,8 @@ await build({
     format: "esm",
     external: ['gi://*', 'resource://*', 'gettext', 'system', 'cairo', 'console'],
     publicPath: './public',
-    plugins: [esbuildPluginInlineImport()],
+    plugins: [/*esbuildPluginInlineImport(),*/ sassPlugin({
+        type: "css-text"
+    }) ],
     loader: react.JSX
 })

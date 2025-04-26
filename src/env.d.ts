@@ -6,7 +6,8 @@ declare module "inline:*" {
 }
 
 declare module "*.scss" {
-    const content: string
+    import sass from 'sass'
+    const content: sass
     export default content
 }
 
