@@ -1,23 +1,20 @@
 // imports
 import { App, Gtk } from 'astal/gtk4'
-import { parse } from 'kdljs'
-import * as fs from 'node:fs'
+import importKdl from '../libs/import-kdl';
+import { KdlRenderer } from "../styles/kdl-renderer.module.scss";
 
 //module exports
-export default async (kdlPath: string) => {
-    const { ApplicationWindow, Text } = Gtk;
-
-    const content = "";
-    const doc = parse(content);
-    console.log(JSON.stringify(doc));
-
+export default async (path: string) => {
+    const { ApplicationWindow, Label } = Gtk;
+    const doc = await importKdl(path);
+    console.log(KdlRenderer);
     return (
         <ApplicationWindow
             visible={true}
-            cssClasses={['kdl-renderer']}
+            cssClasses={ [KdlRenderer] }
             application={App}
         >
-            <Text text={JSON.stringify(doc, null, 2)}></Text>
+            <Label  label={doc.nodes.map(value => value.getName()).join(' ')} />
         </ApplicationWindow>
     )
 }

@@ -1,9 +1,4 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+// applies to all stylesheets
+@use 'colors.module' as colors;
+@use 'kdl-renderer.module' as kdl-renderer;
 
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
-
-.kdl-renderer {
-    background: $bg-color;
-    color: $fg-color;
-}

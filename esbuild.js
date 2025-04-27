@@ -7,12 +7,22 @@ await build({
     entryPoints: ['./src/app.ts'],
     outdir: './dist',
     bundle: true,
+    platform: 'node',
     target: 'firefox91',
     format: "esm",
     external: ['gi://*', 'resource://*', 'gettext', 'system', 'cairo', 'console'],
     publicPath: './public',
-    plugins: [/*esbuildPluginInlineImport(),*/ sassPlugin({
-        type: "css-text"
-    }) ],
+    minify: false,
+    minifyIdentifiers: false,
+    minifySyntax: false,
+    minifyWhitespace: false,
+
+    plugins: [ sassPlugin({
+        filter: /\.module\.scss/,
+        type: 'local-css'
+    }), sassPlugin({
+        filter: /\.scss$/,
+        type: 'css'
+    })],
     loader: react.JSX
 })

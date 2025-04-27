@@ -1,10 +1,10 @@
 import { App } from "astal/gtk4"
-import style from "./styles/index.scss"
 import KdlRenderer from "./widgets/kdl-renderer"
+import { readFileAsync } from 'astal';
 
 App.start(
     {
-    css: style,
+        css: "./dist/app.css",
     main() {
         KdlRenderer('./public/niri-test.kdl').catch(console.error);
     },

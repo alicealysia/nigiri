@@ -1,3 +1,3 @@
 LICENSE: [Non-AI, Anti-Discrimination ISC](https://github.com/alicealysia/nigiri/blob/main/license.md)
 
-Come back later, I'm still cooking!
+Yeah, currently this will load the kdl file placed in public, then write the nodes onto a window. You may not realise it... but this is a critical first step.
