@@ -1,6 +1,6 @@
 {
   "name": "nigiri",
-  "version": "0.0.1",
+  "version": "0.01.0",
   "description": "A niri Gui",
   "homepage": "https://github.com/alicealysia/nigiri#readme",
   "bugs": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/alicealysia/nigiri.git"
   },
-  "license": "Non-AI, Anti-Discrimination ISC https://github.com/alicealysia/nigiri/blob/main/license.md",
+  "license": "COTH",
   "author": "Alice Alysia",
   "type": "module",
   "main": "src/app.ts",
