@@ -17,7 +17,8 @@
   "scripts": {
     "gjs-build": "node esbuild.js",
     "gjs-start": "LD_PRELOAD=\"/usr/lib/libgtk4-layer-shell.so\" gjs -m dist/app.js",
-    "start": "npm run gjs-build && npm run gjs-start"
+    "start": "npm run gjs-build && npm run gjs-start",
+    "bundle": "node esbuild.js --bundle"
   },
   "dependencies": {
     "@bgotink/kdl": "^0.3.1",

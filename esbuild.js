@@ -16,7 +16,6 @@ await build({
     minifyIdentifiers: false,
     minifySyntax: false,
     minifyWhitespace: false,
-
     plugins: [ sassPlugin({
         filter: /\.module\.scss/,
         type: 'local-css'

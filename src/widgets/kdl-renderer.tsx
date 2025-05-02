@@ -1,12 +1,12 @@
 // imports
-import { App, Gtk } from 'astal/gtk4'
-import importKdl from '../libs/import-kdl';
-import { KdlRenderer } from "../styles/kdl-renderer.module.scss";
+import { App, Gtk } from 'astal/gtk4';
+import importKdl, { KdlVersion } from '../libs/import-kdl';
+import { KdlRenderer } from '../styles/kdl-renderer.module.scss';
 
 //module exports
 export default async (path: string) => {
     const { ApplicationWindow, Label } = Gtk;
-    const doc = await importKdl(path);
+    const doc = await importKdl(path, KdlVersion.V1);
     console.log(KdlRenderer);
     return (
         <ApplicationWindow

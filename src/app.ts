@@ -1,6 +1,5 @@
 import { App } from "astal/gtk4"
 import KdlRenderer from "./widgets/kdl-renderer"
-import { readFileAsync } from 'astal';
 
 App.start(
     {
