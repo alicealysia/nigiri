@@ -1,5 +1,5 @@
 import { App } from "astal/gtk4"
-import KdlRenderer from "./widgets/kdl-renderer"
+import KdlRenderer from "./widgets"
 
 App.start(
     {
