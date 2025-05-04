@@ -1,16 +1,18 @@
 // imports
 import { App, Gtk } from 'astal/gtk4';
-import ImportKdl, { KdlVersion } from '../libs/import-kdl';
+import Importer from '../importer';
+import Input from './input'
 
 //module exports
 export default async (path: string) => {
     const { ApplicationWindow, Notebook, Label } = Gtk;
-    const doc = await ImportKdl(path, KdlVersion.V1);
+    const doc = await Importer(path).kdl('v1');
     const notebook = new Notebook();
+    const input = new Input(doc.findNodeByName("input"));
     notebook.set_scrollable(true);
     notebook.append_page(
-        <Label label={"test"} />,
-        <Label label={"Input"} />
+        input.Page,
+        input.Tab
     )
     notebook.append_page(
         <Label label={"test"} />,
