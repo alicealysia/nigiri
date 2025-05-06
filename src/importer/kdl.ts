@@ -8,7 +8,9 @@ export const ParserList = {
 };
 
 export default (fileContent: Promise<string>) => async (kdlVersion: 'v1 Transformed' | 'v1' | 'v2') => {
-    return ParserList[kdlVersion](await fileContent);
+    const content = await fileContent
+    console.log(content)
+    return ParserList[kdlVersion](content);
 }
 
 

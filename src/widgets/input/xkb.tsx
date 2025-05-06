@@ -1,10 +1,6 @@
-import { Identifier, Node as KDLNode, Entry, Value } from '@bgotink/kdl';
-import { listKeymapVariants, listKeymaps, newDropDownFromString } from '../../helpers'
-import { Gtk, astalify } from 'astal/gtk4';
-import { Binding, Variable } from 'astal'
-import Adw from 'gi://Adw';
-
-const { PreferencesGroup, PreferencesRow } = Adw;
+import { Node as KDLNode } from '@bgotink/kdl';
+import { listKeymapVariants, listKeymaps, newDropDownFromString, PreferencesGroup, PreferencesRow } from '../../helpers'
+import { Gtk } from 'astal/gtk4';
 
 // helper functions
 const dropDownFromKeymaps = (value: string) => newDropDownFromString(listKeymaps(value));
@@ -33,7 +29,7 @@ export default class {
 
     public get Section () {
         const possibleVariants = this._possibleValues.variants;
-        const variants = new PreferencesRow({title: "variants"});
+        const variants = PreferencesRow({title: "variants"});
         this._possibleValues.layouts.connect('activate', src => {
             variants.child = possibleVariants[src.get_selected()];
         });
