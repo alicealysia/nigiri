@@ -1,87 +1,68 @@
 import { Identifier, Node as KDLNode, Entry, Value } from '@bgotink/kdl';
-import { exec } from 'astal/process';
-import {Gtk} from 'astal/gtk4';
-import { Box } from 'astal/gtk4/widget'
+import { listKeymapVariants, listKeymaps, newDropDownFromString } from '../../helpers'
+import { Gtk, astalify } from 'astal/gtk4';
+import { Binding, Variable } from 'astal'
+import Adw from 'gi://Adw';
 
-const { Orientation, Label, DropDown } = Gtk;
+const { PreferencesGroup, PreferencesRow } = Adw;
 
-const findVariants = (value: string) => {
-    if (!value) {
-        return [];
-    }
-    try {
-        const outputStr = exec(`/usr/bin/localectl list-x11-keymap-variants ${value}`);
-        if (!outputStr) {
-            return [];
-        }
-        return outputStr.split('\n');
-    } catch (e) {
-        console.error(`Running:localectl list-x11-keymap-variants ${value}, got ${e}`);
-    }
-    return [];
+// helper functions
+const dropDownFromKeymaps = (value: string) => newDropDownFromString(listKeymaps(value));
+const reduceVariants = (accumulator: variantStore, current: string) => {
+    accumulator[current] = Gtk.DropDown.new_from_strings(listKeymapVariants(current))
+    return accumulator;
 }
 
 export default class {
     // rules file to use as a reference point for any xkb values
-    private _possibleValues: iXkbLookup
-    private _xkb: Partial<iXkb>;
-    private _dropDown: Gtk.DropDown;
+    private _possibleValues : possibleValues;
+    private _node : KDLNode;
 
     constructor(node?: KDLNode) {
-        if (node) {
-            this.Node = node;
-        }
+        this._node = node;
+        // generate a collection of dropdown elements from cli
+        const layoutStrings = listKeymaps("layouts")
         this._possibleValues = {
-            models: exec("/usr/bin/localectl list-x11-keymap-models").split('\n'),
-            layouts: exec("/usr/bin/localectl list-x11-keymap-layouts").split('\n').map((value: string) => ({
-                name: value,
-                variants: findVariants(value),
-            })),
-            options: exec("/usr/bin/localectl list-x11-keymap-options").split('\n')
+            models: dropDownFromKeymaps("models"),
+            layouts: newDropDownFromString(layoutStrings),
+            variants: layoutStrings.reduce(reduceVariants, {}),
+            options: dropDownFromKeymaps("options")
         }
-        this._dropDown = DropDown.new_from_strings(this._possibleValues.models);
-    }
 
-    public set Node (node: KDLNode) {
-        const map = new Map();
-        node.entries.forEach(entry => {
-            map.set(entry.getName(), entry.getValue());
-        })
-        this._xkb = Object.fromEntries(map);
-    }
-
-    public get Node () {
-        this._xkb.model = this._possibleValues.models[this._dropDown.get_selected()];
-        const entries = Object.entries(this._xkb).map(([key, value]) => new Entry(new Value(value), new Identifier(key)))
-        return new KDLNode(new Identifier("xkb"), entries);
     }
 
     public get Section () {
+        const possibleVariants = this._possibleValues.variants;
+        const variants = new PreferencesRow({title: "variants"});
+        this._possibleValues.layouts.connect('activate', src => {
+            variants.child = possibleVariants[src.get_selected()];
+        });
+
         return (
-            <Box orientation={ Orientation.VERTICAL }>
-                <Label label={ "Model" }/>
+            <PreferencesGroup title={"keyboard"}>
+                <PreferencesRow title={"model"}>
+                    { this._possibleValues.models }
+                </PreferencesRow>
+                <PreferencesRow title={"layouts"}>
+                    { this._possibleValues.layouts }
+                </PreferencesRow>
                 {
-                    this._dropDown
+                    variants
                 }
-            </Box>
+                <PreferencesRow title={"options"}>
+                    { this._possibleValues.options }
+                </PreferencesRow>
+            </PreferencesGroup>
         )
     }
 }
 
-interface iXkb {
-    rules: string;
-    model: string;
-    layout: string;
-    variant: string;
-    options: string;
-    filePath: string;
+interface possibleValues {
+    models: Gtk.DropDown;
+    layouts: Gtk.DropDown;
+    variants: variantStore;
+    options: Gtk.DropDown;
 }
-
-interface iXkbLookup {
-    models: string[];
-    layouts: {
-        name: string;
-        variants: string[];
-    }[]
-    options: string[];
+interface variantStore {
+    [key:string]: Gtk.DropDown
 }

@@ -2,12 +2,17 @@ import { Node } from '@bgotink/kdl'
 import Xkb from './xkb'
 import { Gtk } from 'astal/gtk4'
 import { Box } from 'astal/gtk4/widget'
+import NavigationTabPage from '../navigation-tab-page';
+import Adw from 'gi://Adw'
 
-const { Expander, Label, Orientation } =  Gtk
+const { Label } =  Gtk
+const { ButtonRow, PreferencesPage } = Adw
 
-export default class {
-    public readonly Tab = (
-        <Label label={"Input"}/>
+export default class implements NavigationTabPage {
+    public Tab = (
+        <ButtonRow
+            title={"Input"}
+        />
     );
     private _xkb: Xkb;
 
@@ -25,15 +30,11 @@ export default class {
             test: <Label label={"test"}/>
         }
         return (
-            <Box orientation={Orientation.VERTICAL}>
+            <PreferencesPage>
                 {
-                    Object.entries(sections).map(([key, value]) => (
-                        <Expander label={key} expanded={true}>
-                            {value}
-                        </Expander>
-                    ))
+                    this._xkb.Section
                 }
-            </Box>
+            </PreferencesPage>
         )
     }
 }
