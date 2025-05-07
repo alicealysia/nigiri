@@ -12,11 +12,11 @@ Per recommendations from yalter himself, my goal is to avoid directly mapping an
 - [ ] create basic UI
    - [x] split view
    - [ ] sidebar buttons
-   - [ ] prefs page
-   - [ ] proper drop downs
+   - [x] prefs page
+   - [x] proper drop downs
 - [ ] kdl functionality
    - [x] kdl reading
-   - [ ] kdl tag handling
+   - [x] kdl tag handling
    - [ ] kdl updating
    - [ ] kdl saving
 - [ ] config settings
