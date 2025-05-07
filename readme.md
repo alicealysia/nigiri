@@ -21,7 +21,7 @@ Per recommendations from yalter himself, my goal is to avoid directly mapping an
    - [ ] kdl saving
 - [ ] config settings
    - [ ] input
-      - [ ] xkb
+      - [x] xkb
       - [ ] mouse
       - [ ] touch
       - [ ] tablet
