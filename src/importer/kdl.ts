@@ -7,10 +7,6 @@ export const ParserList = {
     ['v2']: Parse
 };
 
-export default (fileContent: Promise<string>) => async (kdlVersion: 'v1 Transformed' | 'v1' | 'v2') => {
-    const content = await fileContent
-    console.log(content)
-    return ParserList[kdlVersion](content);
+export default (fileContent: string) => (kdlVersion: 'v1 Transformed' | 'v1' | 'v2') => {
+    return ParserList[kdlVersion](fileContent);
 }
-
-

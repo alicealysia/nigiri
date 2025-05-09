@@ -1,11 +1,20 @@
 import { Node as KDLNode } from '@bgotink/kdl';
-import { listKeymapVariants, listKeymaps, newDropDownFromString, PreferencesGroup, PreferencesRow } from '../../helpers'
+import {
+    listKeymapVariants,
+    listKeymaps,
+    newDropDownFromString,
+    PreferencesGroup,
+    PreferencesRow,
+    ListBox,
+    ComboRow,
+    PreferencesPage,
+} from '../../helpers';
 import { Gtk } from 'astal/gtk4';
 
 // helper functions
 const dropDownFromKeymaps = (value: string) => newDropDownFromString(listKeymaps(value));
 const reduceVariants = (accumulator: variantStore, current: string) => {
-    accumulator[current] = Gtk.DropDown.new_from_strings(listKeymapVariants(current))
+    accumulator[current] = Gtk.StringList.new(listKeymapVariants(current))
     return accumulator;
 }
 
@@ -19,46 +28,33 @@ export default class {
         // generate a collection of dropdown elements from cli
         const layoutStrings = listKeymaps("layouts")
         this._possibleValues = {
-            models: dropDownFromKeymaps("models"),
-            layouts: newDropDownFromString(layoutStrings),
+            models: Gtk.StringList.new(listKeymaps("models")),
+            layouts: Gtk.StringList.new(layoutStrings),
             variants: layoutStrings.reduce(reduceVariants, {}),
-            options: dropDownFromKeymaps("options")
+            options: Gtk.StringList.new(listKeymaps("options"))
         }
 
     }
 
     public get Section () {
-        const possibleVariants = this._possibleValues.variants;
-        const variants = PreferencesRow({title: "variants"});
-        this._possibleValues.layouts.connect('activate', src => {
-            variants.child = possibleVariants[src.get_selected()];
-        });
-
         return (
-            <PreferencesGroup title={"keyboard"}>
-                <PreferencesRow title={"model"}>
-                    { this._possibleValues.models }
-                </PreferencesRow>
-                <PreferencesRow title={"layouts"}>
-                    { this._possibleValues.layouts }
-                </PreferencesRow>
-                {
-                    variants
-                }
-                <PreferencesRow title={"options"}>
-                    { this._possibleValues.options }
-                </PreferencesRow>
-            </PreferencesGroup>
+            <PreferencesGroup title={"Keyboard"}
+                setup={self => {
+                    self.add(<ComboRow title={"model"} visible={true} model={ this._possibleValues.models } />)
+                    self.add(<ComboRow title={"layouts"} visible={true} model={ this._possibleValues.layouts } />)
+                    self.add(<ComboRow title={"options"} visible={true} model={ this._possibleValues.options } />)
+                }}
+            />
         )
     }
 }
 
 interface possibleValues {
-    models: Gtk.DropDown;
-    layouts: Gtk.DropDown;
+    models: Gtk.StringList;
+    layouts: Gtk.StringList;
     variants: variantStore;
-    options: Gtk.DropDown;
+    options: Gtk.StringList;
 }
 interface variantStore {
-    [key:string]: Gtk.DropDown
+    [key:string]: Gtk.StringList
 }

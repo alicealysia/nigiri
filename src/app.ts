@@ -4,6 +4,6 @@ App.start(
     {
         css: "./dist/app.css",
     main() {
-        MainWindow('./public/niri-test.kdl').catch(console.error);
+        MainWindow('./public/niri-test.kdl');
     },
 })

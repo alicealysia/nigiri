@@ -1,17 +1,9 @@
 import kdl from "./kdl";
-import { readFileAsync as ReadFileAsync } from 'astal'
-
-let importsList: Map<string, Promise<string>> = new Map<string, Promise<string>>();
+import { readFileAsync as ReadFileAsync, readFile } from 'astal'
 
 export default (path: string) => {
-    console.log(path);
-    if (!importsList.has(path)) {
-        console.log('not in list')
-        const value = ReadFileAsync(path);
-        console.log(value)
-        importsList.set(path, value);
-    }
+    const value = readFile(path);
     return {
-        kdl: kdl(importsList[path]),
+        kdl: kdl(value)
     }
 }
