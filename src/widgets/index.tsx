@@ -14,10 +14,13 @@ export default (path: string) => {
     const input = new Input(doc.findNodeByName("input"));
     return (
         <ApplicationWindow visible={true} application={App} >
-            <NavigationSplitView visible={true} show_content={true}
-                sidebar={Adw.NavigationPage.new(Gtk.Label.new('sidebar'), 'sidebar')}
-                content={Adw.NavigationPage.new(input.Page, 'content')}
-            >
+            <NavigationSplitView visible={true} show_content={true}>
+                <NavigationPage name={"sidebar"} title={"sidebar"} />
+                <NavigationPage name={"content"} title={"content"}>
+                    {
+                        input.Page
+                    }
+                </NavigationPage>
             </NavigationSplitView>
         </ApplicationWindow>
     );

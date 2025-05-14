@@ -1,5 +1,6 @@
 import { parseWithoutFormatting as ParseWithoutFormatting, parseAndTransform as ParseAndTransform } from '@bgotink/kdl/v1-compat'
-import { parse as Parse } from '@bgotink/kdl'
+import { parse as Parse } from '@bgotink/kdl';
+import Xkb from './xkb'
 
 export const ParserList = {
     ['v1 Transformed']: ParseAndTransform,
@@ -10,3 +11,5 @@ export const ParserList = {
 export default (fileContent: string) => (kdlVersion: 'v1 Transformed' | 'v1' | 'v2') => {
     return ParserList[kdlVersion](fileContent);
 }
+
+export { Xkb }
