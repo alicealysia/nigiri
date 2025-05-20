@@ -1,4 +1,4 @@
-import kdl, { Xkb } from "./kdl";
+import kdl from "./kdl";
 import { readFileAsync as ReadFileAsync, readFile } from 'astal'
 
 export default (path: string) => {
@@ -7,5 +7,3 @@ export default (path: string) => {
         kdl: kdl(value)
     }
 }
-
-export { Xkb }

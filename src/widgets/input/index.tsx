@@ -1,8 +1,7 @@
 import { Node } from '@bgotink/kdl'
 import Xkb from './xkb'
-import NavigationTabPage from '../navigation-tab-page';
 import Adw from 'gi://Adw'
-import { PreferencesPage } from '../../helpers';
+import { PreferencesPage } from '../astalified';
 const { ButtonRow } = Adw
 
 export default class {

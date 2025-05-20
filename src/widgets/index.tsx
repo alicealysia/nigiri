@@ -1,7 +1,7 @@
 // imports
 import Importer from '../importer';
 import Input from './input'
-import { NavigationSplitView, NavigationPage } from '../helpers'
+import { NavigationSplitView, NavigationPage } from './astalified'
 import Adw from 'gi://Adw'
 import { App, Gtk } from 'astal/gtk4';
 const {ApplicationWindow} = Gtk

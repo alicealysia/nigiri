@@ -1,8 +1,13 @@
+import { astalify } from "astal/gtk4"
 import Adw from 'gi://Adw'
-import { astalify, type ConstructProps } from "astal/gtk4"
 import { Box } from 'astal/gtk4/widget'
 
-export type NavigationSplitViewProps = ConstructProps<Adw.PreferencesGroup, Adw.PreferencesGroup.ConstructorProps>
+export const ComboRow = astalify<Adw.ComboRow, Adw.ComboRow.ConstructorProps>(Adw.ComboRow, {
+    // if it is a container widget, define children setter and getter here
+    getChildren(self) { return [] },
+    setChildren(self, children) {},
+})
+
 export const NavigationSplitView = astalify<Adw.NavigationSplitView, Adw.NavigationSplitView.ConstructorProps>(Adw.NavigationSplitView, {
     // if it is a container widget, define children setter and getter here
     getChildren(self) { return [self.sidebar, self.content] },
@@ -30,15 +35,6 @@ export const NavigationSplitView = astalify<Adw.NavigationSplitView, Adw.Navigat
         }
     },
 })
-
-export type NavigationViewProps = ConstructProps<Adw.NavigationView, Adw.NavigationView.ConstructorProps>
-export const NavigationView = astalify<Adw.NavigationView, Adw.NavigationView.ConstructorProps>(Adw.NavigationView, {
-    // if it is a container widget, define children setter and getter here
-    getChildren(self) { return [] },
-    setChildren(self, children) {},
-})
-
-export type NavigationPageProps = ConstructProps<Adw.NavigationPage, Adw.NavigationPage.ConstructorProps>
 export const NavigationPage = astalify<Adw.NavigationPage, Adw.NavigationPage.ConstructorProps>(Adw.NavigationPage, {
     // if it is a container widget, define children setter and getter here
     getChildren(self) { return [] },
@@ -51,4 +47,10 @@ export const NavigationPage = astalify<Adw.NavigationPage, Adw.NavigationPage.Co
     },
 })
 
-
+export const PreferencesGroup = astalify<Adw.PreferencesGroup, Adw.PreferencesGroup.ConstructorProps>(Adw.PreferencesGroup)
+export const PreferencesPage = astalify<Adw.PreferencesPage, Adw.PreferencesPage.ConstructorProps>(
+    Adw.PreferencesPage, {
+        getChildren(self) { return [] },
+        setChildren(self, children) {},
+    }
+)
