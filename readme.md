@@ -17,7 +17,7 @@ Per recommendations from yalter himself, my goal is to avoid directly mapping an
 - [ ] kdl functionality
    - [x] kdl reading
    - [x] kdl tag handling
-   - [ ] kdl updating
+   - [x] kdl updating
    - [ ] kdl saving
 - [ ] config settings
    - [ ] input
