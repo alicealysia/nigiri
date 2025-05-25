@@ -1,31 +1,11 @@
-# Nigiri
-#### the niri settings graphical interface
+# Give Up GitHub
 
-Nigiri is planned to be a graphical interface for niri written in typescript using astal, adw and gtk4.
+This project has given up GitHub.  ([See Software Freedom Conservancy's *Give Up  GitHub* site for details](https://GiveUpGitHub.org).)
 
-as this is my first project using these libraries, you can expect progress to move at a snail's pace.
+[You can now find this project at source hub](https://git.sr.ht/~alicealysia/NiGuiRi) instead.
 
-at present, the project is unable to actually manage anyone's settings whatsoever, as I'm mostly just getting the overall visual elements set up at this stage.
+Any use of this project's code by GitHub Copilot, past or present, is done without our permission.  We do not consent to GitHub's use of this project's code in Copilot.
 
-Per recommendations from yalter himself, my goal is to avoid directly mapping an interface to the kdl file for the sake of forwards compatibility.
+Join us; you can [give up GitHub](https://GiveUpGitHub.org) too!
 
-- [ ] create basic UI
-   - [x] split view
-   - [ ] sidebar buttons
-   - [x] prefs page
-   - [x] proper drop downs
-- [ ] kdl functionality
-   - [x] kdl reading
-   - [x] kdl tag handling
-   - [x] kdl updating
-   - [ ] kdl saving
-- [ ] config settings
-   - [ ] input
-      - [x] xkb
-      - [ ] mouse
-      - [ ] touch
-      - [ ] tablet
-   - [ ] outputs
-  
-
-LICENSE: [Code Open to Humanity (coth)](https://github.com/alicealysia/nigiri/blob/main/license.md)
+![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/img/GiveUpGitHub.png)
